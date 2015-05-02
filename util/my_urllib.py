@@ -33,8 +33,7 @@ def JudgeCharaCode(str_data):
 		return chara_code
 	else:
 		return None
-		
-		
+
 if __name__ == "__main__":
 	html = GetHTMLString('http://www.yahoo.co.jp/')
 	print(html)
