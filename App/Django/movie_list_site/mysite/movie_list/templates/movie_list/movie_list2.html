@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Movie List{% endblock title %}
+
+{% block extrahead %}
+<style>
+	table {
+		margin-top: 8px;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+	<h3 class="page-header">映画の一覧</h3>
+	<a href="{% url 'movie_list:movie_add' %}" class="btn btn-default btn-sm">追加</a>
+	<div class="row">
+		<div class="col-md-4">
+				<table class="table table-hover table-bordered">
+					{% for movie in movies %}
+					<tr>
+						<th>{{ movie.title }}</th>
+					</tr>
+					<tr>
+						<td><img src="{{movie.picture_path}}" width="240px" height="320px"></td>
+					</tr>
+					<tr>
+						<td>
+							<a href="{% url 'movie_list:movie_edit' movie_id=movie.id %}" class="btn btn-default btn-sm">修正</a>
+							<a href="{% url 'movie_list:movie_del' movie_id=movie.id %}" class="btn btn-default btn-sm">削除</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</table>
+		</div>
+	</div>
+{% endblock content %}
