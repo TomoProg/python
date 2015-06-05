@@ -1,0 +1,29 @@
+{% extends "PyBoard/base.html" %}
+
+{% block title %}Login Page{% endblock %}
+
+{% block extrahead %}
+<style>
+	#content {
+		text-align: center;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>PyBoard</h1>
+<h3>Login Page</h3>
+<form action="{% url 'PyBoard:login' %}" method="post">
+{% csrf_token %}
+	<table align="center">
+		{{form1.as_table}}
+	</table>
+	<input type="submit" value="Login">
+</form>
+<a href="{% url 'PyBoard:create_user' %}">Create User Page</a>
+<p id=info>
+{% if info_ret == -1 %}
+Sorry, Login Failed...
+{% endif %}
+</p>
+{% endblock %}
